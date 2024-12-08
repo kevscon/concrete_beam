@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Structural Input</title>
+  </head>
+  <body>
+    <h1>Enter Structural Design Parameters</h1>
+    <form action="/process" method="post">
+      <label>Width:</label>
+      <input type="number" step="0.01" name="width" value="12" required><br>
+
+      <label>Height:</label>
+      <input type="number" step="0.01" name="height" required><br>
+
+      <label>Concrete Cover (d_c):</label>
+      <input type="number" step="0.01" name="d_c" required><br>
+
+      <label>Steel Area:</label>
+      <input type="number" step="0.01" name="steel_area" required><br>
+
+      <label>Spacing:</label>
+      <input type="number" step="0.01" name="spacing" value="12" required><br>
+
+      <label>Concrete Strength (f_c):</label>
+      <input type="number" step="0.01" name="f_c" value="4" required><br>
+
+      <label>Steel Yield Strength (f_y):</label>
+      <input type="number" step="0.01" name="f_y" value="60" required><br>
+
+      <label>Phi Moment (phi_m):</label>
+      <input type="number" step="0.01" name="phi_m" value="0.9" required><br>
+
+      <label>Phi Shear (phi_v):</label>
+      <input type="number" step="0.01" name="phi_v" value="0.9" required><br>
+
+      <label>Steel Modulus of Elasticity (E_s):</label>
+      <input type="number" step="0.01" name="E_s" value="29000" required><br>
+
+      <label>Concrete Density:</label>
+      <input type="number" step="0.01" name="conc_density" value="150" required><br>
+
+      <label>Factored Moment (M_u):</label>
+      <input type="number" step="0.01" name="M_u" required><br>
+
+      <label>Service Moment (M_s):</label>
+      <input type="number" step="0.01" name="M_s" required><br>
+
+      <label>Factored Shear (V_u):</label>
+      <input type="number" step="0.01" name="V_u" required><br>
+    <button type="submit">Calculate</button>
+    </form>
+  </body>
+</html>

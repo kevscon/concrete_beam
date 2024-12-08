@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+</head>
+<body>
+    <h1>Calculation Results</h1>
+    <table border="1">
+        <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Beam Dead Load (w_DL)</td>
+            <td>{{ w_DL }}</td>
+        </tr>
+        <tr>
+            <td>Cracking Moment (M_cr)</td>
+            <td>{{ M_cr }}</td>
+        </tr>
+        <tr>
+            <td>Depth of Compression Block (a)</td>
+            <td>{{ a }}</td>
+        </tr>
+        <tr>
+            <td>Moment Capacity (M_n)</td>
+            <td>{{ moment_capacity }}</td>
+        </tr>
+        <tr>
+            <td>Steel Strain (epsilon_st)</td>
+            <td>{{ epsilon_st }}</td>
+        </tr>
+        <tr>
+            <td>Shear Capacity (V_n)</td>
+            <td>{{ shear_capacity }}</td>
+        </tr>
+        <tr>
+            <td>Uncracked Stress (f_ct)</td>
+            <td>{{ f_ct }}</td>
+        </tr>
+        <tr>
+            <td>Steel Stress (f_s)</td>
+            <td>{{ f_s }}</td>
+        </tr>
+        <tr>
+            <td>Concrete Stress (f_c)</td>
+            <td>{{ f_c }}</td>
+        </tr>
+        <tr>
+            <td>Distribution Reinforcement (A_TS)</td>
+            <td>{{ A_TS }}</td>
+        </tr>
+        <tr>
+            <td>Moment Check</td>
+            <td>{{ moment_check }}</td>
+        </tr>
+        <tr>
+            <td>Shear Check</td>
+            <td>{{ shear_check }}</td>
+        </tr>
+        <tr>
+            <td>Minimum Reinforcement Check</td>
+            <td>{{ min_reinf_check }}</td>
+        </tr>
+        <tr>
+            <td>Crack Control Check</td>
+            <td>{{ crack_control_check }}</td>
+        </tr>
+        <tr>
+            <td>Ductility Check</td>
+            <td>{{ ductility_check }}</td>
+        </tr>
+        <tr>
+            <td>Excess Reinforcement Factor (γ_er)</td>
+            <td>{{ gamma_er }}</td>
+        </tr>
+    </table>
+    <a href="/">Back to Input</a>
+</body>
+</html>
