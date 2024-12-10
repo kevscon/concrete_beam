@@ -13,7 +13,7 @@ def calc_fr(f_c):
 
 def calc_beta1(f_c):
     """
-    Calculates concrete beta_1 factor.
+    Calculates concrete stress block factor.
 
     Parameters:
     - f_c: Compressive strength of concrete (ksi).
@@ -134,8 +134,7 @@ class BeamCapacity(ConcreteBeam):
         Returns:
         - Moment capacity, M_n (k-ft).
         """
-        a = self.a
-        M_n = self.A_s * self.f_y * (self.d - a / 2) / 12
+        M_n = self.A_s * self.f_y * (self.d - self.a / 2) / 12
         return round(M_n, 1)
     
     def calc_epsilon_t(self, epsilon_c=0.003):
@@ -157,20 +156,19 @@ class BeamCapacity(ConcreteBeam):
         """
         beta_1 = calc_beta1(self.f_c)
         c = self.a / beta_1
-        d_v = max(self.d_c - c / 2, 0.9 * self.d_c, 0.72 * self.h)
-        return d_v
+        self.d_v = max(self.d - c / 2, 0.9 * self.d, 0.72 * self.h)
+        return round(self.d_v, 2)
 
     def calc_Vc(self, gamma=1, beta=2) -> float:
         """
         Parameters:
-        - gamma: factor.
-        - beta: factor.
+        - lambda: Concrete density modification factor.
+        - beta: Tension and shear transmission factor.
 
         Returns:
         - Concrete shear capacity, V_c (kips).
         """
-        d_v = self.calc_dv()
-        V_c = 0.0316 * beta * gamma * self.f_c ** 0.5 * self.b * d_v
+        V_c = 0.0316 * beta * gamma * self.f_c ** 0.5 * self.b * self.d_v
         return V_c
 
     def calc_shear_capacity(self, V_s=0):
@@ -179,9 +177,8 @@ class BeamCapacity(ConcreteBeam):
         - Shear capacity, V_n (kips).
         """
         V_c = self.calc_Vc()
-        d_v = self.calc_dv()
-        V_n_min = 0.25 * self.f_c * self.b * d_v
-        V_n = min(V_c + V_s, V_n_min)
+        max_V_n = 0.25 * self.f_c * self.b * self.d_v
+        V_n = min(V_c + V_s, max_V_n)
         return round(V_n, 1)
 
 class BeamStress(ConcreteBeam):

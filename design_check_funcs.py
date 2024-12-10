@@ -1,4 +1,4 @@
-def check_capacity(capacity, load, resistance_factor):
+def check_capacity(capacity, load, resistance_factor=1):
     """
     Calculates the design ratio.
     """
@@ -18,20 +18,35 @@ def calc_epsilon_tl(f_y, epsilon_c=0.003):
         epsilon_tl = (f_y - 75) / (100 - 75) * epsilon_c + 0.005
     return epsilon_tl
 
-def calc_design_M(M_u, M_cr, gamma_1=1.6, gamma_3=0.67):
+def determine_gamma_3(f_y):
+    """
+    Determine value for the AASHTO yield strength to ultimate strength ratio factor.
+
+    Parameters:
+    - f_y: Yield strength of steel (ksi).
+    """
+    if f_y == 75:
+        gamma_3 = 0.75
+    elif f_y == 80:
+        gamma_3 = 0.76
+    else:
+        gamma_3 = 0.67
+    return gamma_3
+
+def calc_design_M(M_u, M_cr, gamma_3=0.67, gamma_1=1.6):
     """
     Calculates design moment based on minimum reinforcement criteria.
 
     Parameters:
     - M_u: Factored moment load (k-ft).
     - M_cr: Cracking moment (k-ft).
-    - gamma_1: AASHTO factor.
-    - gamma_3: AASHTO factor.
+    - gamma_1: AASHTO flexure cracking variation factor.
+    - gamma_3: AASHTO yield strength to ultimate strength ratio factor.
 
     Returns:
     - Design moment (k-ft).
     """
-    M_design = max(min(gamma_1 * gamma_3 * M_u, 1.33 * M_cr), M_u)
+    M_design = max(min(gamma_1 * gamma_3 * M_cr, 1.33 * M_u), M_u)
     return M_design
 
 def calc_design_spacing(f_r, f_ct, f_s, f_y, h, d_c, gamma_e=0.75):
@@ -45,7 +60,7 @@ def calc_design_spacing(f_r, f_ct, f_s, f_y, h, d_c, gamma_e=0.75):
     - f_y: Yield strength of steel (ksi).
     - h: Beam height (in).
     - d_c: Concrete face in tension to center of reinforcing (in).
-    - gamma_e: AASHTO factor.
+    - gamma_e: AASHTO exposure factor.
 
     Returns:
     - Maximum spacing, s_max (in).

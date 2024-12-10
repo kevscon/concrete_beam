@@ -11,46 +11,62 @@
         <tr>
             <th>Parameter</th>
             <th>Value</th>
+            <th>Units</th>
         </tr>
         <tr>
             <td>Beam Dead Load (w_DL)</td>
             <td>{{ w_DL }}</td>
+            <td>k/ft</td>
         </tr>
         <tr>
             <td>Cracking Moment (M_cr)</td>
             <td>{{ M_cr }}</td>
+            <td>k-ft</td>
         </tr>
         <tr>
             <td>Depth of Compression Block (a)</td>
             <td>{{ a }}</td>
+            <td>in</td>
         </tr>
         <tr>
-            <td>Moment Capacity (M_n)</td>
+            <td>Factored Moment Capacity (ϕM_n)</td>
             <td>{{ moment_capacity }}</td>
+            <td>k-ft</td>
         </tr>
         <tr>
             <td>Steel Strain (epsilon_st)</td>
             <td>{{ epsilon_st }}</td>
+            <td></td>
         </tr>
         <tr>
-            <td>Shear Capacity (V_n)</td>
+            <td>Effective Shear Depth (d_v)</td>
+            <td>{{ d_v }}</td>
+            <td>in</td>
+        </tr>
+        <tr>
+            <td>Factored Shear Capacity (ϕV_n)</td>
             <td>{{ shear_capacity }}</td>
+            <td>kips</td>
         </tr>
         <tr>
             <td>Uncracked Stress (f_ct)</td>
             <td>{{ f_ct }}</td>
+            <td>ksi</td>
         </tr>
         <tr>
             <td>Steel Stress (f_s)</td>
             <td>{{ f_s }}</td>
+            <td>ksi</td>
         </tr>
         <tr>
             <td>Concrete Stress (f_c)</td>
             <td>{{ f_c }}</td>
+            <td>ksi</td>
         </tr>
         <tr>
             <td>Distribution Reinforcement (A_TS)</td>
-            <td>{{ A_TS }}</td>
+            <td>{{ A_ts }}</td>
+            <td>in²/ft</td>
         </tr>
         <tr>
             <td>Moment Check</td>
