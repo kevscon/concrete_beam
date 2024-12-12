@@ -4,6 +4,18 @@ def check_capacity(capacity, load, resistance_factor=1):
     """
     return resistance_factor * capacity / load
 
+def calc_capacity_ratio(load, capacity, resistance_factor=1):
+    """
+    Calculates the ratio of capacity to load.
+    """
+    return resistance_factor * capacity / load
+
+def calc_demand_ratio(load, capacity, resistance_factor=1):
+    """
+    Calculates the ratio of load to capacity.
+    """
+    return load / (resistance_factor * capacity)
+
 def calc_epsilon_tl(f_y, epsilon_c=0.003):
     """
     Calculates the minimum steel strain required for a ductile section.
